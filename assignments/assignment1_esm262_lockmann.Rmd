@@ -1,0 +1,21 @@
+---
+title: "ESM262 Assignment 1"
+author: "Taylor Lockmann"
+date: "2/7/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Why I am taking this course
+
+I am taking this course primarily because I am planning on taking ESM232 in the Spring, and I would like to complete this course as the prerequisite for 232. I am also looking forward to refreshing my general coding skills, and building a little more on my formal education with building functions and loops. More specifically, I hope to be able to apply more modularity to the work I am currently doing in land use change research.
+
+
+## My data science background
+
+Prior to coming to Bren I had no knowledge of data science or programming. My introduction to data science was with Allison Horst's ESM206 and ESM244. I loved both and wanted to pursue more data analysis experience, so I did my summer internship with Conservation International where I was a Climate Change and Biodiversity Intern. I spent most of the summer working on building an interactive Shiny app for users to explore novel irrecoverable carbon data produced by CI's scientists. Since my internship ended in September, I have been working on a project with emLab and CI to evaluate human-wildlife conflicts in the face of changing climate and land use. I use R to work with large netcdfs and .tif files containing land use data for multiple future climate change scenarios.
+
+
