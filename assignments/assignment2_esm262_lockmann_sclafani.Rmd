@@ -1,0 +1,31 @@
+---
+title: "ESM 262 Assignment 2"
+author: "Taylor Lockmann & Dani Sclafani"
+date: "2/9/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Contract for whole program
+
+We want to take environmental variables and estimate the net profit of a field of crops of a specific size.
+
+
+## Contracts for each module
+
+### Module 1
+Take environmental variables (land area, sunlight, seed density, water, fertilizer) and estimate the total crop yield for that field.
+
+### Module 2
+Take output from Module 1, and factor in the market price of that specific crop to estimate the gross profit from that field of crops.
+
+### Module 3
+Take output from Module 2, and factor in the costs of production to produce the estimated total net profit. 
+
+[See the model visual here](https://drive.google.com/file/d/1dyU0Hk_4GbMiSUlDHkxfkBc4znqnNKNC/view?usp=sharing)
+
+
