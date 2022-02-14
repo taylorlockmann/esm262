@@ -1,0 +1,71 @@
+---
+title: "Automobile Power Generation"
+author: "Taylor Lockmann"
+date: "2/14/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(here)
+library(tidyverse)
+```
+
+
+### 1. Read in the function we created & ensure it works
+```{r}
+# Source in the function to use
+source(here("working", "automobile_power_generation.R"))
+
+# Answer the very first question
+automobile_power_generation(mass = 31752, speed = 30, surface_area = 16)
+```
+It works!
+
+### 2. Use the function to find the power output for various speeds
+
+```{r}
+# Now we know the function works, answer the rest of the questions
+
+# To convert from km/hr to m/s, divide the speed value by 3.6
+
+# Get the power value at each speed
+heavy_truck_power_outputs <- automobile_power_generation(mass = 31752, speed = c(30, 80/3.6, 120/3.6, 40/3.6, 5/3.6), surface_area = 16)
+
+power <- as.data.frame(heavy_truck_power_outputs)
+power$speed <- c(30, 80/3.6, 120/3.6, 40/3.6, 5/3.6)
+```
+
+
+### 3. Graph the power output vs. speeds
+
+```{r}
+# Now graph the outputs
+ggplot(data = power, aes(x = speed, y = heavy_truck_power_outputs))+
+  geom_line()+
+  geom_point()+
+  theme_bw()
+```
+
+### 4. Now repeat the process, changing the weight of the vehicle
+```{r}
+# Final problem: do the same thing, but with a lighter vehicle
+
+power$light_truck_power_output <- automobile_power_generation(mass = 2000, speed = power$speed, surface_area = 16)
+
+# Graph the lighter vehicle compared to the heavier vehicle
+ggplot(data = power)+
+  geom_line(aes(x = speed, y = heavy_truck_power_outputs, color = "Heavy"))+
+  geom_point(aes(x = speed, y = heavy_truck_power_outputs, color = "Heavy"))+
+  geom_line(aes(x = speed, y = light_truck_power_output, color = "Light"))+
+  geom_point(aes(x = speed, y = light_truck_power_output, color = "Light"))+
+  theme_bw()+
+  labs(x = "speed",
+       y = "power_output",
+       color = "Truck Weight")
+```
+
+
+Yay for functions!
+
+
