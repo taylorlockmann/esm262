@@ -1,5 +1,5 @@
 ---
-title: "Automobile Power Generation"
+title: "ESM262 Assignment 3: Automobile Power Generation"
 author: "Taylor Lockmann"
 date: "2/14/2022"
 output: html_document

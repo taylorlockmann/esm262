@@ -1,0 +1,83 @@
+---
+title: '"for" loops - Fertilizer example'
+author: "Taylor Lockmann"
+date: "2/16/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+```{r}
+# Try it by myself first
+
+# Assign our variables
+fertilizer <- rnorm(10, mean = 5, sd = 0.5)
+TP <- 20
+
+# Make a data frame that we can use to sum things together
+yields <- data.frame(fertilizer = fertilizer)
+
+# Write the for loop to auto-populate the data frame
+for (i in 1:10) {
+  yields$yield[i] = 1.8*yields$fertilizer[i]^2 - 0.5*yields$fertilizer[i]+0.3*TP
+  
+  total_yield = sum(yields$yield)
+}
+
+total_yield
+
+# So this works, but it's just an extra step to populate the data frame
+```
+
+```{r}
+# Try it a different way
+
+fertilizer <- rnorm(10, mean = 5, sd = 0.5)
+TP <- 20
+
+yields <- c() # Make an empty "list" in which to store the data we'll auto-populate with the for loop
+for (i in 1:10){
+  yields[i] = 1.8*fertilizer[i]^2 - 0.5*fertilizer[i]+0.3*TP
+}
+sum(yields)
+```
+
+```{r}
+# Now create a function to that takes as input a single value for annual fertilizer and annual total precipitation and returns yield
+
+fert_yield <- function(fertilizer, precipitation) {
+  yield = 1.8*fertilizer^2-0.5*fertilizer+0.3*precipitation
+  
+  return(yield)
+}
+
+fert_yield(6, 30)
+```
+
+
+```{r}
+# Now modify your function so that it returns total yield if the user inputs a vector of fertilizer and a vector of precipitation
+
+total_fert_yield <- function(fert_vector, precip_vector) {
+  for (i in 1:10){
+      yield <- c()
+  
+  yield[i] = 1.8*fert_vector[i]^2-0.5*fert_vector[i]+0.3*precip_vector[i]
+  }
+  
+  total_yield <- sum(yield)
+  
+  return(total_yield)
+}
+
+
+# Test it
+fertilizer <- rnorm(10, mean = 5, sd = 0.5)
+precipitation <- runif(min=20, max=20, n=10)
+
+total_fert_yield(fertilizer, precipitation)
+```
+
