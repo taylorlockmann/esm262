@@ -1,0 +1,25 @@
+---
+title: "Fish Assignment"
+author: "Taylor Lockmann"
+date: "3/2/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# Bring in the fishstats function
+source("../R/fishstats.R")
+
+# Read in the data to use, convert it to a vector
+catch1 <- read.csv("../data/fish.txt")
+catch1 <- catch1$x
+```
+
+```{r}
+# Run the function using the vector provided
+fishstats(catch1)
+```
+
