@@ -1,0 +1,50 @@
+---
+title: 'ESM262 Assignment 6: Heat Assignment'
+author: "Taylor Lockmann"
+date: "3/7/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Read in packages, function & data
+```{r}
+library(tidyverse)
+library(here)
+
+tempfunction <- source(here("R", "tempfunction.R"))
+maxtemp <- read.table(here("data", "tmax.txt"), header = TRUE)
+```
+
+
+### Create precipitation and age data
+```{r}
+# Create age distribution
+a <- 1:100
+age <- sample(a, size = nrow(maxtemp), replace = T)
+
+
+# Create precipitation data
+b <- 50:700
+precip <- sample(b, size = nrow(maxtemp), replace = T)
+
+
+# Reduce number of decimal places in tmax
+maxtemp$tmax <- round(maxtemp$tmax, 1)
+
+# Combine into single data frame
+trees <- cbind(maxtemp, age, precip)
+```
+
+
+### Run function with data and loop
+
+```{r}
+# Randomly pick a date from the data
+i <- sample(1:nrow(trees), size = 1)
+survival(trees$date[i], trees$age[i], trees$precip[i], trees$tmax[i])
+```
+
+
